@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_171223) do
+ActiveRecord::Schema.define(version: 2019_04_30_183334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_171223) do
     t.bigint "style_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "size"
     t.index ["style_id"], name: "index_colors_on_style_id"
   end
 
@@ -30,6 +31,29 @@ ActiveRecord::Schema.define(version: 2019_04_25_171223) do
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.string "full_name"
+    t.string "org_name"
+    t.string "add_one"
+    t.string "add_two"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.string "country"
+    t.string "email"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.integer "quote_number"
+    t.string "front"
+    t.string "back"
+    t.string "color"
+    t.text "sizes"
+    t.text "notes"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "styles", force: :cascade do |t|
@@ -52,5 +76,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_171223) do
   end
 
   add_foreign_key "colors", "styles"
+  add_foreign_key "quotes", "users"
   add_foreign_key "styles", "manufactures"
 end

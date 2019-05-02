@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
 
     if user.valid?
       token = encode_token({ user_id: user.id, username: user.username })
-      render json: { user: { username: user.username }, token: token}, status: :created
+      render json: { user: { username: user.username, is_admin: user.is_admin}, token: token}, status: :created
     else
       render json: { error: 'failed to create user' }, status: :not_acceptable
     end
@@ -14,6 +14,11 @@ class Api::V1::UsersController < ApplicationController
 
   def get_user
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
+
+  def user_quotes
+    quotes = User.find(params[:id]).quotes
+    render json:quotes
   end
 
   private
