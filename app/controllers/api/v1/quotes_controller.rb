@@ -10,9 +10,20 @@ class Api::V1::QuotesController < ApplicationController
     render json:quote
   end
 
+  def update
+    quote = Quote.find(params[:id])
+    quote.update(quote_params)
+    render json:quote
+  end
+
   def get_quote
     quote = Quote.find_by(quote_number: params[:id])
     render json:quote
+  end
+
+  def destroy
+    quote = Quote.find_by(quote_number: params[:id])
+    quote.destroy
   end
 
   def all_quotes
@@ -23,6 +34,6 @@ class Api::V1::QuotesController < ApplicationController
   private
 
   def quote_params
-    params.require(:quote).permit(:full_name, :org_name, :add_one, :add_two, :city, :state, :zipcode, :country, :email, :status, :quote_number, :sizes, :notes, :front, :back, :color, :user_id)
+    params.require(:quote).permit(:full_name, :org_name, :add_one, :add_two, :city, :state, :zipcode, :country, :email, :status, :quote_number, :sizes, :notes, :front, :back, :color, :shirt_type, :user_id)
   end
 end

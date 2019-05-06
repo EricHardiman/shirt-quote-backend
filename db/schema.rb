@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_183334) do
+ActiveRecord::Schema.define(version: 2019_05_05_205205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,18 @@ ActiveRecord::Schema.define(version: 2019_04_30_183334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "size"
+    t.string "actual_color"
+    t.boolean "multi"
+    t.string "name2"
     t.index ["style_id"], name: "index_colors_on_style_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.bigint "quote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_id"], name: "index_images_on_quote_id"
   end
 
   create_table "manufactures", force: :cascade do |t|
@@ -44,8 +55,6 @@ ActiveRecord::Schema.define(version: 2019_04_30_183334) do
     t.string "country"
     t.string "email"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "status"
     t.integer "quote_number"
     t.string "front"
@@ -53,6 +62,9 @@ ActiveRecord::Schema.define(version: 2019_04_30_183334) do
     t.string "color"
     t.text "sizes"
     t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "shirt_type"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
@@ -64,6 +76,10 @@ ActiveRecord::Schema.define(version: 2019_04_30_183334) do
     t.bigint "manufacture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender"
+    t.string "category"
+    t.string "age_group"
+    t.string "starting_color"
     t.index ["manufacture_id"], name: "index_styles_on_manufacture_id"
   end
 
@@ -76,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_183334) do
   end
 
   add_foreign_key "colors", "styles"
+  add_foreign_key "images", "quotes"
   add_foreign_key "quotes", "users"
   add_foreign_key "styles", "manufactures"
 end
