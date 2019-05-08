@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :images, only: [:create, :destroy]
       resources :quotes
+      resources :messages
+      resources :chats
       resources :colors
       resources :styles
       resources :manufactures
@@ -14,4 +16,6 @@ Rails.application.routes.draw do
       get '/all_quotes', to: 'quotes#all_quotes'
     end
   end
+  mount ActionCable.server => '/cable'
+
 end
