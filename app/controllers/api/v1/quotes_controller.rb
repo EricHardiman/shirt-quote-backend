@@ -24,6 +24,7 @@ class Api::V1::QuotesController < ApplicationController
   def destroy
     quote = Quote.find_by(quote_number: params[:id])
     quote.destroy
+    render json:quote
   end
 
   def all_quotes

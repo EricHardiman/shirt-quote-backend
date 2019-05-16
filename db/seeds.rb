@@ -77,3 +77,15 @@ comfcol = Manufacture.find_or_create_by(name: "Comfort Colors", logo:"https://ww
 #Comfort Colors - Garment Dyed Heavyweight Ringspun Tank Top - 9360
 cc9360= Style.find_or_create_by(name: "Comfort Colors - Garment Dyed Heavyweight Ringspun Tank Top - 9360", front: "https://www.ssactivewear.com/Images/Color/35468_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/35468_b_fl.jpg", starting_color: "White", size: "S, M, L, XL, 2XL, 3XL, 4XL", gender: "Unisex", age_group: "Adult", category: "Tank Top", manufacture_id: comfcol.id)
 Color.find_or_create_by(name: "white", front: "https://www.ssactivewear.com/Images/Color/35468_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/35468_b_fl.jpg", size: "S, M, L, XL, 2XL, 3XL, 4XL", actual_color: "White", style_id: cc9360.id)
+#-----------------------------------------------------------------------------------------------------------------------------
+#Bella Canvas Manufacture
+belcan = Manufacture.find_or_create_by(name: "Bella Canvas", logo:"")
+#Bella Canvas - Women's Flowy Racerback Tank - 8800
+bel8800 = Style.find_or_create_by(name: "Bella Canvas - Women's Flowy Racerback Tank - 8800", front: "https://www.ssactivewear.com/Images/Color/39812_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/39812_b_fl.jpg", starting_color: "Neon Pink", size: "S, M, L, XL, 2XL", gender: "Women", age_group: "Adult", category: "Tank Top", manufacture_id: belcan.id)
+Color.find_or_create_by(name: "pink", front: "https://www.ssactivewear.com/Images/Color/39812_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/39812_b_fl.jpg", actual_color: "Neon Pink", size: "S, M, L, XL, 2XL", style_id: bel8800.id)
+#-----------------------------------------------------------------------------------------------------------------------------
+#Independent Manufacture
+indep = Manufacture.find_or_create_by(name: "Independent", logo:"")
+#Independent - Youth Midweight Hooded Pullover Sweatshirt - SS4001Y
+inss4001y = Style.find_or_create_by(name: "Independent - Youth Midweight Hooded Pullover Sweatshirt - SS4001Y", front: "https://www.ssactivewear.com/Images/Color/44318_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/44318_b_fl.jpg", starting_color: "Red", size: "S, M, L, XL", gender: "Unisex", age_group: "Youth", category: "Sweatshirt", manufacture_id: indep.id)
+Color.find_or_create_by(name: "red", front: "https://www.ssactivewear.com/Images/Color/44318_f_fl.jpg", back: "https://www.ssactivewear.com/Images/Color/44318_b_fl.jpg", actual_color: "Red", size: "S, M, L, XL", style_id: inss4001y.id)

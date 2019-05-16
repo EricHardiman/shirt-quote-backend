@@ -7,14 +7,10 @@ default: &default
 development:
   <<: *default
   database: shirt-quote-backend_development
-  username: postgres
-  password: password
 
 test:
   <<: *default
   database: shirt-quote-backend_test
-  username: postgres
-  password: password
 
 production:
   <<: *default
